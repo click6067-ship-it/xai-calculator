@@ -42,6 +42,20 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#030712] text-gray-200">
+      {/* Fixed Home button — premium glass card */}
+      <a
+        href="https://yongha-kim-frontier.vercel.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="home-btn"
+        title="Back to Portfolio"
+      >
+        <div className="home-btn__border" />
+        <div className="home-btn__glass">
+          <img src="/Yo-logo.png" alt="Home" className="home-btn__logo" />
+        </div>
+      </a>
+
       {/* Header */}
       <header className="border-b border-gray-800/60 px-6 py-8">
         <div className="max-w-7xl mx-auto">

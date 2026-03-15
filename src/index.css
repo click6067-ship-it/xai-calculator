@@ -38,6 +38,123 @@
   box-shadow: 0 0 20px rgba(6, 182, 212, 0.08);
 }
 
+/* ── Premium Home Button ─────────────────────────────────── */
+
+/* Border-trace rotation */
+@keyframes border-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Diagonal light sweep */
+@keyframes sweep {
+  0%   { transform: translateX(-120%); }
+  100% { transform: translateX(120%); }
+}
+
+/* Outer wrapper — fixed top-right, Apple squircle clip */
+.home-btn {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  z-index: 50;
+  width: 54px;
+  height: 54px;
+  border-radius: 22%;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Rotating conic-gradient — creates the neon border-trace */
+.home-btn__border {
+  position: absolute;
+  inset: -28px;                       /* oversized so rotation fills corners */
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    transparent 5%,
+    rgba(6, 182, 212, 0.7) 10%,
+    rgba(34, 211, 238, 1)   14%,
+    rgba(6, 182, 212, 0.7) 18%,
+    transparent 25%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+  will-change: transform;
+}
+.home-btn:hover .home-btn__border {
+  opacity: 1;
+  animation: border-rotate 2.8s linear infinite;
+}
+
+/* Glass inner panel — inset to reveal rotating border edge */
+.home-btn__glass {
+  position: absolute;
+  inset: 2px;
+  border-radius: 20%;
+  background: rgba(6, 12, 24, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 1;
+  transition: background 0.4s ease-in-out,
+              border-color 0.4s ease-in-out,
+              box-shadow 0.4s ease-in-out;
+}
+.home-btn:hover .home-btn__glass {
+  background: rgba(6, 24, 40, 0.8);
+  border-color: rgba(6, 182, 212, 0.12);
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.08),
+              0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* Diagonal reflection sweep */
+.home-btn__glass::after {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 220%;
+  height: 220%;
+  background: linear-gradient(
+    -45deg,
+    transparent 42%,
+    rgba(255, 255, 255, 0.06) 46%,
+    rgba(255, 255, 255, 0.14) 50%,
+    rgba(255, 255, 255, 0.06) 54%,
+    transparent 58%
+  );
+  transform: translateX(-120%);
+  pointer-events: none;
+  z-index: 3;
+}
+.home-btn:hover .home-btn__glass::after {
+  animation: sweep 0.7s ease-in-out 0.15s forwards;
+}
+
+/* Logo — scale + cyan glow on hover */
+.home-btn__logo {
+  width: 34px;
+  height: 34px;
+  border-radius: 18%;
+  object-fit: cover;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.4s ease-in-out,
+              filter 0.4s ease-in-out;
+}
+.home-btn:hover .home-btn__logo {
+  transform: scale(1.12);
+  filter: drop-shadow(0 0 6px rgba(6, 182, 212, 0.5))
+          drop-shadow(0 0 14px rgba(6, 182, 212, 0.2));
+}
+
 @keyframes carry-pulse {
   0%, 100% { opacity: 0.4; }
   50% { opacity: 1; }
