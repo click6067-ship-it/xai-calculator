@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  code, .font-mono {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0f1a;
+}
+::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 3px;
+}
+
+.heatmap-cell {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.heatmap-cell:hover {
+  transform: scale(1.25);
+  z-index: 10;
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.4);
+}
+
+.katex { color: #e5e7eb !important; }
+
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.08);
+}
+
+@keyframes carry-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+.carry-active {
+  animation: carry-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out;
+}

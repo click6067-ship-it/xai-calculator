@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd \"C:/Users/click/Desktop/qwen343-claude\" && npm install 2>&1)",
+      "Bash(cd \"C:/Users/click/Desktop/qwen343-claude\" && npx vite build 2>&1)",
+      "Bash(cd \"C:/Users/click/Desktop/qwen343-claude\" && npx vite --host 2>&1 | head -10)"
+    ]
+  }
+}
